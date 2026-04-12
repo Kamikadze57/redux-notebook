@@ -26,3 +26,10 @@ export const removeTodo = id => {
     payload: id,
   };
 };
+
+export const filterTodo = filter => {
+  return {
+    type: ACTION_TYPES.filter,
+    payload: filter,
+  };
+};

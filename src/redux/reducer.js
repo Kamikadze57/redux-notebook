@@ -1,3 +1,4 @@
+import { combineReducers } from "redux";
 import { ACTION_TYPES } from "./constants";
 // Мозок нашого додатку(Обчислення та перезапис)
 
@@ -22,6 +23,18 @@ const todoReducer = (state = baseState, action) => {
       return state;
   }
 };
+const filterReducer = (state = baseState, action) => {
+  switch (action.type) {
+    case ACTION_TYPES.filter:
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
+const rootReducer = combineReducers({
+  todo: todoReducer,
+  filter: filterReducer,
+});
 
-export default todoReducer;
+export default rootReducer;
