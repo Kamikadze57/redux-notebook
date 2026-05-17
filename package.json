@@ -1,12 +1,13 @@
 {
-  "name": "redux-textbook-app",
-  "version": "1.1.1",
+  "name": "redux-notebook-app",
+  "version": "1.2.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "@redux-devtools/extension": "3.2.3",
-    "@reduxjs/toolkit": "^2.11.2",
+    "@reduxjs/toolkit": "^2.12.0",
+    "axios": "^1.16.1",
     "clsx": "1.2.1",
     "nanoid": "4.0.0",
     "react": "18.2.0",

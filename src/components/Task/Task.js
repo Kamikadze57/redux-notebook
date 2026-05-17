@@ -1,10 +1,12 @@
-import { MdClose } from "react-icons/md";
-import css from "./Task.module.css";
-import { removeToDo, toggleToDo } from "../../redux/todos/todosSlice";
-
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import css from "./Task.module.css";
+import { MdClose } from "react-icons/md";
+import { deleteTodos } from "../../redux/todos/todosOperations";
+import EditModal from "../EditModal/EditModal";
 
 export const Task = ({ task }) => {
+  const [modal, isOpen] = useState(false);
   const dispatch = useDispatch();
   return (
     <div className={css.wrapper}>
@@ -15,9 +17,11 @@ export const Task = ({ task }) => {
         onChange={() => dispatch(toggleToDo(task.id))}
       />
       <p className={css.text}>{task.text}</p>
-      <button className={css.btn} onClick={() => dispatch(removeToDo(task.id))}>
+      <button className={css.btn} onClick={() => isOpen(true)}>redact</button>
+      <button className={css.btn} onClick={() => dispatch(deleteTodos(task.id))}>
         <MdClose size={24} />
       </button>
+      {modal && <EditModal modal={modal} text={task.text} close={() => isOpen(false)}/>}
     </div>
   );
 };
